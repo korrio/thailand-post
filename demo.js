@@ -2,13 +2,12 @@
 
 var TrackService = require('./').TrackService;
 
-
 var trackService = new TrackService({
 	lang: "EN"
 });
 
 trackService.init(function(err, serv) {
-	serv.getItem("EN331755897TH", function(err, result) {
+	serv.getItem("RR228045926TH", function(err, result) {
 		if (err) {
 			return console.log(err);
 		}
@@ -16,59 +15,59 @@ trackService.init(function(err, serv) {
 		console.log(result.ItemsData.Items[0]);
 	});
 
-	serv.getCountries(function(err, result) {
-		if (err) {
-			return console.log(err);
-		}
+	// serv.getCountries(function(err, result) {
+	// 	if (err) {
+	// 		return console.log(err);
+	// 	}
 
-		console.log(result);
-	});
+	// 	console.log(result);
+	// });
 
-	serv.getServices(function(err, result) {
-		if (err) {
-			return console.log(err);
-		}
+	// serv.getServices(function(err, result) {
+	// 	if (err) {
+	// 		return console.log(err);
+	// 	}
 
-		console.log(result);
-	});
+	// 	console.log(result);
+	// });
 
-	serv.getRates("TH", 30, function(err, result) {
-		if (err) {
-			return console.log(err);
-		}
+	// serv.getRates("TH", 30, function(err, result) {
+	// 	if (err) {
+	// 		return console.log(err);
+	// 	}
 
-		console.log(result);
-	});
+	// 	console.log(result);
+	// });
 
-	serv.getRatesByService("1", "TH", 120, function(err, result) {
-		if (err) {
-			return console.log(err);
-		}
+	// serv.getRatesByService("1", "TH", 120, function(err, result) {
+	// 	if (err) {
+	// 		return console.log(err);
+	// 	}
 
-		console.log(result);
-	});
+	// 	console.log(result);
+	// });
 
-	serv.getAllLocations(function(err, result) {
-		if (err) {
-			return console.log(err);
-		}
+	// serv.getAllLocations(function(err, result) {
+	// 	if (err) {
+	// 		return console.log(err);
+	// 	}
 
-		console.log(result);
-	});
+	// 	console.log(result);
+	// });
 
-	serv.searchLocation("คลอง", function(err, result) {
-		if (err) {
-			return console.log(err);
-		}
+	// serv.searchLocation("คลอง", function(err, result) {
+	// 	if (err) {
+	// 		return console.log(err);
+	// 	}
 
-		console.log(result);
-	});
+	// 	console.log(result);
+	// });
 
-	serv.getNearbyLocations(13.11143, 101.154250, 10, function(err, result) {
-		if (err) {
-			return console.log(err);
-		}
+	// serv.getNearbyLocations(13.11143, 101.154250, 10, function(err, result) {
+	// 	if (err) {
+	// 		return console.log(err);
+	// 	}
 
-		console.log(result);
-	});
+	// 	console.log(result);
+	// });
 });
