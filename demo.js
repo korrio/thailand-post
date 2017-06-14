@@ -1,73 +1,92 @@
 "use strict";
 
-var TrackService = require('./').TrackService;
+var jsonBody = require("body/json");
+var express = require('express');
+var app = express();
 
+var TrackService = require('./').TrackService;
 var trackService = new TrackService({
-	lang: "EN"
+	lang: "TH"
 });
 
-trackService.init(function(err, serv) {
-	serv.getItem("RR228045926TH", function(err, result) {
-		if (err) {
-			return console.log(err);
-		}
+var s = "";
 
-		console.log(result.ItemsData.Items[0]);
-	});
+app.set('port', process.env.PORT || 3000);
+app.get('/check', function (req, res) {
+	 s = req.query.s;
 
-	// serv.getCountries(function(err, result) {
-	// 	if (err) {
-	// 		return console.log(err);
-	// 	}
+	 trackService.init(function(err, serv) {
+	 	serv.getItem(s, function(err, result) {
+	 		if (err) {
+	 			return console.log(err);
+	 		}
 
-	// 	console.log(result);
-	// });
+	 		//console.log(result.ItemsData);
+			res.send(result.ItemsData);
+	 	});
 
-	// serv.getServices(function(err, result) {
-	// 	if (err) {
-	// 		return console.log(err);
-	// 	}
+		// 	serv.getCountries(function(err, result) {
+	 // 		if (err) {
+	 // 			return console.log(err);
+	 // 		}
+		// 	res.send(result);
+	 // 		//console.log(result);
+		// 	});
 
-	// 	console.log(result);
-	// });
+		// 	serv.getServices(function(err, result) {
+	 // 		if (err) {
+	 // 			return console.log(err);
+	 // 		}
+		//
+		// 	res.send(result);
+	 // 		//console.log(result);
+		// 	});
 
-	// serv.getRates("TH", 30, function(err, result) {
-	// 	if (err) {
-	// 		return console.log(err);
-	// 	}
+		// 	serv.getRates("TH", 30, function(err, result) {
+	 // 		if (err) {
+	 // 			return console.log(err);
+	 // 		}
+		//
+		// 	res.send(result);
+	 // 		//console.log(result);
+		// 	});
 
-	// 	console.log(result);
-	// });
+		// 	serv.getRatesByService("1", "TH", 120, function(err, result) {
+	 // 		if (err) {
+	 // 			return console.log(err);
+	 // 		}
+		// 	res.send(result);
+	 // 		//console.log(result);
+		// 	});
 
-	// serv.getRatesByService("1", "TH", 120, function(err, result) {
-	// 	if (err) {
-	// 		return console.log(err);
-	// 	}
+	 	// serv.getAllLocations(function(err, result) {
+	 	// 	if (err) {
+	 	// 		return console.log(err);
+	 	// 	}
 
-	// 	console.log(result);
-	// });
+	 	// 	console.log(result);
+	 	// });
 
-	// serv.getAllLocations(function(err, result) {
-	// 	if (err) {
-	// 		return console.log(err);
-	// 	}
+	 	// serv.searchLocation("คลอง", function(err, result) {
+	 	// 	if (err) {
+	 	// 		return console.log(err);
+	 	// 	}
 
-	// 	console.log(result);
-	// });
+	 	// 	console.log(result);
+	 	// });
 
-	// serv.searchLocation("คลอง", function(err, result) {
-	// 	if (err) {
-	// 		return console.log(err);
-	// 	}
+	//  	serv.getNearbyLocations(13.11143, 101.154250, 10, function(err, result) {
+	//  		if (err) {
+	//  			return console.log(err);
+	//  		}
+	 //
+	// 		res.send(result);
+	//  		//console.log(result);
+	//  	});
 
-	// 	console.log(result);
-	// });
+		});
+});
 
-	// serv.getNearbyLocations(13.11143, 101.154250, 10, function(err, result) {
-	// 	if (err) {
-	// 		return console.log(err);
-	// 	}
-
-	// 	console.log(result);
-	// });
+app.listen(app.get('port'), function () {
+  console.log(`EMS app listening on ${app.get('port')}`);
 });

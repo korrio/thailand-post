@@ -11,7 +11,13 @@
     "lodash": "~2.4.1",
     "moment": "^2.17.1",
     "moment-timezone": "^0.5.11",
-    "soap": "0.9.x"
+    "soap": "0.9.x",
+    "body": "*",
+    "chai": "*",
+    "express": "^4.15.2",
+    "glob": "^7.1.1",
+    "mocha": "*",
+    "underscore": "*"
   },
   "main": "./index.js",
   "directories": {
