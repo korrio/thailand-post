@@ -3,7 +3,7 @@
 An **unofficial** Node SDK for **Thailand Post** that consumes the official API.
 
 > **WARNING**
-> 
+>
 > This project contains information that was obtained from reverse-engineering.   
 > In order to legally use the official API, you must [send a request](http://www.thailandpost.co.th/download/Web%20Service.pdf) to Thailand Post.
 
@@ -159,3 +159,6 @@ serv.client.GetItems(args, function(err, result) {
 	console.log(result);
 });
 ```
+
+## Express Usage (as a RESTful API)
+[http://localhost:3000/check?s=ET013198338TH](http://localhost:3000/check?s=ET013198338TH)
